@@ -1,0 +1,52 @@
+.HeaderDiv {
+  width: 100%;
+  height: 74px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.16);
+}
+
+.NavFirstDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+}
+
+.LinkDiv {
+  width: 499px;
+  margin-right: 150px;
+}
+
+.DisAbleLink {
+  margin-right: 50px;
+  text-decoration: none;
+  color: #282828;
+}
+
+.activeLink {
+  margin-right: 30px;
+  text-decoration: none;
+  color: #28a745;
+}
+
+.BtnLogin {
+  border: 2px solid #28a745;
+  color: #28a745;
+  background-color: white;
+  border-radius: 8px;
+  width: 166px;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.BtnLogin img{
+    margin-left: 5px;
+}
