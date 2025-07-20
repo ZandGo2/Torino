@@ -47,6 +47,87 @@
   align-items: center;
 }
 
-.BtnLogin img{
-    margin-left: 5px;
+.BtnLogin img {
+  margin-left: 5px;
+}
+
+.FooterDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin-top: 50px;
+  /* width: 1440px; */
+  width: 100%;
+}
+
+.MainFooter {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.DivFirstListFooter {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.FirstListFooter {
+  margin-left: 120px;
+}
+
+.FirstListFooter p {
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.FirstListFooter ul li {
+  list-style: none;
+  margin-top: 10px;
+  color: rgba(40, 40, 40, 1);
+}
+
+.SecondSectionFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.DivLogoFooter {
+  margin-top: 35px;
+}
+
+.DivLogoFooter img {
+  margin-bottom: 20px;
+}
+
+.DivImg {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.DivImg img {
+  margin-left: 25px;
+}
+
+.DivP {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.DivP p {
+  margin-top: 20px;
+  color: rgba(0, 0, 0, 1);
+  font-size: 16px;
+  font-weight: 400;
 }
