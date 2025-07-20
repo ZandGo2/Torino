@@ -56,7 +56,7 @@
   flex-direction: column;
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  margin-top: 50px;
+  /* margin-top: 50px; */
   /* width: 1440px; */
   width: 100%;
 }
@@ -126,7 +126,7 @@
 }
 
 .DivP p {
-  margin-top: 20px;
+  margin: 20px;
   color: rgba(0, 0, 0, 1);
   font-size: 16px;
   font-weight: 400;
