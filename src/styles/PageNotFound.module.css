@@ -26,3 +26,9 @@
   border-radius: 16px;
   margin-top: 75px;
 }
+
+.errorText p{
+  font-size: 24px;
+  font-weight: 600;
+  color: rgba(40, 40, 40, 1);
+}
