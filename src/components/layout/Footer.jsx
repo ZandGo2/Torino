@@ -1,76 +1,60 @@
 import Image from "next/image";
 import styles from "./layout.module.css";
 
+import {
+  FOOTER_SECTIONS,
+  FOOTER_CONTACT,
+  FOOTER_COPYRIGHT,
+  FOOTER_TRUST_ICONS,
+} from "@/constants/DataFooter.js";
+
 const Footer = () => {
   return (
     <div className={styles.FooterDiv}>
       <div className={styles.MainFooter}>
         <div className={styles.DivFirstListFooter}>
           <div className={styles.FirstListFooter}>
-            <p>تورینو</p>
+            <p>{FOOTER_SECTIONS.First_Section.title}</p>
             <ul>
-              <li>درباره ما</li>
-              <li>تماس با ما</li>
-              <li>چرا تورینو</li>
-              <li>بیمه مسافرتی</li>
+              {FOOTER_SECTIONS.First_Section.links.map((item, index) => (
+                <li key={index}>{item.label}</li>
+              ))}
             </ul>
           </div>
           <div className={styles.FirstListFooter}>
-            <p>خدمات مشتریان</p>
+            <p>{FOOTER_SECTIONS.Second_Section.title}</p>
             <ul>
-              <li>پشتیبانی آنلاین</li>
-              <li>راهنمای خرید</li>
-              <li>راهنمای استرداد</li>
-              <li>پرسش و پاسخ</li>
+              {FOOTER_SECTIONS.Second_Section.links.map((item, index) => (
+                <li key={index}>{item.label}</li>
+              ))}
             </ul>
           </div>
         </div>
         <div className={styles.SecondSectionFooter}>
           <div className={styles.DivLogoFooter}>
             <Image
-              src="/Images/Torino.png"
-              alt="logo"
-              width={146}
-              height={44}
+              src={FOOTER_CONTACT.logoSrc}
+              alt={FOOTER_CONTACT.altText}
+              width={FOOTER_CONTACT.logoWidth}
+              height={FOOTER_CONTACT.logoHeight}
             />
-            <p>تلفن پشتیبانی : 021-8574</p>
+            <p>تلفن پشتیبانی : {FOOTER_CONTACT.phone}</p>
           </div>
           <div className={styles.DivImg}>
-            <Image
-              src="/Images/aira-682b7c43.png"
-              alt="aira"
-              width={68}
-              height={74}
-            />
-            <Image
-              src="/Images/samandehi-6e2b448a.png"
-              alt="samandehi"
-              width={67}
-              height={74}
-            />
-            <Image
-              src="/Images/ecunion-35c3c933.png"
-              alt="ecunion"
-              width={68}
-              height={74}
-            />
-            <Image
-              src="/Images/passenger-rights-48368f81 1.png"
-              alt="passenger-rights"
-              width={71}
-              height={74}
-            />
-            <Image
-              src="/Images/home-desktop.png"
-              alt="home-desktop"
-              width={78}
-              height={74}
-            />
+            {FOOTER_TRUST_ICONS.map((icon, index) => (
+              <Image
+                key={index}
+                src={icon.src}
+                alt={icon.alt}
+                width={icon.width}
+                height={icon.height}
+              />
+            ))}
           </div>
         </div>
       </div>
       <div className={styles.DivP}>
-        <p>کلیه حقوق این وب سایت متعلق به تورینو میباشد.</p>
+        <p>{FOOTER_COPYRIGHT}</p>
       </div>
     </div>
   );
