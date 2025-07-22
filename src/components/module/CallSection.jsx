@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ListCardTour = () => {
+const CallSection = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const ListCardTour = () => {
     );
 };
 
-export default ListCardTour;
+export default CallSection;
