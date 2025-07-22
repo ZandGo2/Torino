@@ -1,0 +1,23 @@
+.Contain {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 25px;
+}
+
+.TextDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+}
+
+.TitleP {
+    
+}
+
+.SwiperDiv {
+    width: 50%;
+}
