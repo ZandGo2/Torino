@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { AuthContext } from "@/context/AuthContext";
 import { notify } from "../utils/notify";
 
-const {dispatch} = AuthContext()
+const { dispatch } = AuthContext();
 
 const axiosInstance = axios.create({
   baseURL: process.env.BASE_URL,
