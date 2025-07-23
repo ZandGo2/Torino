@@ -1,6 +1,7 @@
+"use client";
 import { useReducer, useContext, createContext } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 const initialState = {
   step: "none", // login, verify, done

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import { useState } from "react";
 import OtpInput from "react-otp-input";
 
 const VerifyModal = () => {
-    const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
   return (
     <div>
       <div>
