@@ -2,6 +2,8 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
+import VerifyModal from "@/components/template/modal/VerifyModal";
+import LoginModal from "@/components/template/modal/LoginModal";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -23,6 +25,8 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <body>
         <Header />
+        <LoginModal />
+        <VerifyModal />
         {children}
         <Footer />
       </body>
