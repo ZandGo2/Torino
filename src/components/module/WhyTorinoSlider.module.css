@@ -14,7 +14,17 @@
     width: 50%;
 }
 
-.TitleP {
+.TitleP span{
+    background: rgba(40, 167, 69, 1);
+    border-radius: 50%;
+    width: 59px;
+    height: 68px;
+    padding:  8px 22px;
+    font-size: 28px;
+    margin-left: 25px;
+}
+
+.TitleP p{
     
 }
 

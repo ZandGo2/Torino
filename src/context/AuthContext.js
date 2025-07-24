@@ -1,5 +1,5 @@
 "use client";
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, createContext } from "react";
 
 export const AuthContext = createContext();
 
@@ -22,7 +22,7 @@ const reducer = (state, action) => {
     // input
     case "SET_PHONE":
       return { ...state, phone: action.payload };
-    case "SER_CODE":
+    case "SET_CODE":
       return { ...state, code: action.payload };
     case "CLOSE":
       return initialState;

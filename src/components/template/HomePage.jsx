@@ -5,6 +5,8 @@ import WhyTorinoSlider from "@/components/module/WhyTorinoSlider";
 import ListCardTour from "./ListCardTour";
 import TrustIcons from "@/components/module/TrustIcons";
 
+
+
 const HomePage = () => {
   return (
     <div>

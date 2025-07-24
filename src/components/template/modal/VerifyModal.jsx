@@ -1,9 +1,13 @@
 "use client";
-import { useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { useContext, useState } from "react";
 import OtpInput from "react-otp-input";
 
 const VerifyModal = () => {
   const [otp, setOtp] = useState("");
+  const { statusLogin, dispatch } = useContext(AuthContext);
+
+  if (statusLogin.step !== "verify") return null;
   return (
     <div>
       <div>

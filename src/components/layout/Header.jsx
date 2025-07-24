@@ -1,9 +1,18 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 import { HEADER_LINKS } from "@/constants/DataHeader.js";
+import { AuthContext } from "@/context/AuthContext";
 import styles from "./layout.module.css";
 
 const Header = () => {
+  const { statusLogin, dispatch } = useContext(AuthContext);
+
+  const ClickHandler = () => {
+    console.log({ statusLogin, dispatch })
+  }
+
   return (
     <div className={styles.HeaderDiv}>
       <div className={styles.NavFirstDiv}>
@@ -23,7 +32,7 @@ const Header = () => {
         </div>
       </div>
       <div>
-        <button className={styles.BtnLogin}>
+        <button className={styles.BtnLogin} onClick={ClickHandler}>
           <Image
             src="/Images/profile.png"
             alt="profile"

@@ -1,6 +1,11 @@
-import React from "react";
+"use client";
+import { AuthContext } from "@/context/AuthContext";
+import { useContext } from "react";
 
 const Login = () => {
+  const { statusLogin, dispatch } = useContext(AuthContext);
+
+  if (statusLogin.step !== "login") return null;
   return (
     <div>
       <div>

@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.status == 401) {
-      const messageError = error.response.data.message;
+      const messageError = error.response.data.message || "";
       notify("error", messageError);
       Cookies.remove("access_token");
       // open modal login
