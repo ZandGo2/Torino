@@ -1,9 +1,9 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { AuthContext } from "@/context/AuthContext";
-import { notify } from "../utils/notify";
+import { notify } from "@/utils/tostify";
 
-const { dispatch } = AuthContext();
+// const { dispatch } = AuthContext();
 
 const axiosInstance = axios.create({
   baseURL: process.env.BASE_URL,
@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
       notify("error", messageError);
       Cookies.remove("access_token");
       // open modal login
-      dispatch({ type: "OPEN_LOGIN" });
+      // dispatch({ type: "OPEN_LOGIN" });
     }
     return Promise.reject(error);
   }

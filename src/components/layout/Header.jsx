@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
@@ -10,8 +10,8 @@ const Header = () => {
   const { statusLogin, dispatch } = useContext(AuthContext);
 
   const ClickHandler = () => {
-    console.log({ statusLogin, dispatch })
-  }
+    dispatch({ type: "OPEN_LOGIN" });
+  };
 
   return (
     <div className={styles.HeaderDiv}>
