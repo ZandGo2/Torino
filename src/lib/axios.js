@@ -1,12 +1,13 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { AuthContext } from "@/context/AuthContext";
+// import { AuthContext } from "@/context/AuthContext";
 import { notify } from "@/utils/tostify";
 
 // const { dispatch } = AuthContext();
 
 const axiosInstance = axios.create({
-  baseURL: process.env.BASE_URL,
+  // baseURL: process.env.BASE_URL,
+  baseURL: "http://localhost:6500",
   headers: {
     "Content-Type": "application/json",
   },

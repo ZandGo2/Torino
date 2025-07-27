@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 const initialState = {
   step: "none", // login, verify, done
-  phone: "",
+  mobile: "",
   code: "",
   error: "",
 };
@@ -21,7 +21,7 @@ const reducer = (state, action) => {
       return { ...state, step: "done", error: null };
     // input
     case "SET_PHONE":
-      return { ...state, phone: action.payload };
+      return { ...state, mobile: action.payload };
     case "SET_CODE":
       return { ...state, code: action.payload };
     case "CLOSE":

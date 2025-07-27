@@ -3,8 +3,9 @@ import { useMutation } from "@tanstack/react-query";
 
 export const useLoginMutation = () => {
   return useMutation({
-    mutationFn: async (phone) => {
-      const response = await axiosInstance.post("/auth/login", { phone });
+    mutationFn: async (mobile) => {
+      const response = await axiosInstance.post("/auth/send-otp", { mobile });
+      console.log(response)
       return response.data;
     },
   });
