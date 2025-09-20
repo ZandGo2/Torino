@@ -21,38 +21,38 @@ export const FOOTER_SECTIONS = {
 
 export const FOOTER_CONTACT = {
   phone: "021-8574",
-  logoSrc: "/Images/Torino.png",
+  logoSrc: "/Images/Logo.png",
   altText: "logo",
   logoWidth: 146,
   logoHeight: 44,
 };
 
 export const FOOTER_TRUST_ICONS = [
-  { src: "/Images/aira-682b7c43.png", alt: "aira", width: 68, height: 74 },
+  { src: "/images/footer/aira.png", alt: "aira", width: 68, height: 74 },
   {
-    src: "/Images/samandehi-6e2b448a.png",
+    src: "/images/footer/samandehi.png",
     alt: "samandehi",
     width: 67,
     height: 74,
   },
   {
-    src: "/Images/ecunion-35c3c933.png",
+    src: "/images/footer/ecunion.png",
     alt: "ecunion",
     width: 68,
     height: 74,
   },
   {
-    src: "/Images/passenger-rights-48368f81 1.png",
+    src: "/images/footer/passenger.png",
     alt: "passenger-rights",
     width: 71,
     height: 74,
   },
   {
-    src: "/Images/home-desktop.png",
+    src: "/images/footer/state-airline.png",
     alt: "home-desktop",
     width: 78,
     height: 74,
   },
 ];
 
-export const FOOTER_COPYRIGHT = "کلیه حقوق این وب‌سایت متعلق به تورینو میباشد.";
+export const FOOTER_COPYRIGHT = ".کلیه حقوق این وب‌سایت متعلق به تورینو میباشد";

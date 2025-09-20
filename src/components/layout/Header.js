@@ -4,7 +4,7 @@ import { HEADER_LINKS } from "@/constants/DataHeader.js";
 
 const Header = () => {
   return (
-    <header className="h-[74px]  flex flex-row-reverse items-center justify-between rounded-lg shadow-xl p-2">
+    <header className="w-[1440px] h-[74px] m-auto flex flex-row-reverse items-center justify-between rounded-lg shadow-xl p-2">
       <div className="w-[70%] flex flex-row-reverse items-center justify-between">
         <div>
           <Image src="/images/Logo.png" alt="logo" width={146} height={44} />
