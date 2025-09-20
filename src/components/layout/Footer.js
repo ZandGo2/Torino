@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
       </section>
       <section className="border-t border-solid border-black/20 w-full">
-        <p className="text-base text-center p-6">{FOOTER_COPYRIGHT}</p>
+        <p className="text-base text-center p-4">{FOOTER_COPYRIGHT}</p>
       </section>
     </footer>
   );
