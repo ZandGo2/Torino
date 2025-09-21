@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const NotFound = () => {
   return (
-    <div className="w-[1440px] m-auto flex flex-row justify-around items-center">
+    <div className="w-[1440px] m-auto mt-[75px] flex flex-row justify-around items-center">
       <Image
         src="/Images/Error TV.png"
         alt="error500"

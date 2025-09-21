@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <footer>
-      <section className="w-[1440px] h-[290px] m-auto p-2 flex flex-row-reverse items-center justify-between border-t border-solid border-black/20">
+      <section className="w-[1180px] h-[290px] m-auto p-2 flex flex-row-reverse items-center justify-between border-t border-solid border-black/20">
         <div className="w-[25%] flex flex-row-reverse justify-between">
           <div className="flex flex-col text-right">
             <p className="text-2xl font-semibold mb-6">
