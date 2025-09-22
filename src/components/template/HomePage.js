@@ -7,46 +7,52 @@ import TrustIcons from "../module/dashboard/TrustIcons";
 
 const data = [
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
   {
-    image: "/images/Error.png",
+    image: "/images/1.jpg",
     title: "هولر",
     price: 105000,
-    options: ["نهار و صبحانه", "هفل پنج ستاره"],
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
+  },
+  {
+    image: "/images/1.jpg",
+    title: "هولر",
+    price: 105000,
+    options: ["نهار و صبحانه", " هفل پنج ستاره"],
   },
 ];
 
@@ -61,9 +67,14 @@ const HomePage = () => {
         className="m-auto"
       />
       {/* <Search /> */}
-      {data.map((tour, i) => (
-        <CardTour key={i} {...tour} />
-      ))}
+      <div className="w-[1180] m-auto flex flex-row-reverse mt-10">
+        <h2 className="text-4xl font-normal mb-3.5">همه تور ها</h2>
+      </div>
+      <div className="w-[1180] m-auto flex flex-wrap flex-row justify-between">
+        {data.map((tour, i) => (
+          <CardTour key={i} {...tour} />
+        ))}
+      </div>
       <Phone />
       <WhyTorino />
       <TrustIcons />
