@@ -66,7 +66,7 @@ const HomePage = () => {
         height={350}
         className="m-auto"
       />
-      {/* <Search /> */}
+      <Search />
       <div className="w-[1180] m-auto flex flex-row-reverse mt-10">
         <h2 className="text-4xl font-normal mb-3.5">همه تور ها</h2>
       </div>
