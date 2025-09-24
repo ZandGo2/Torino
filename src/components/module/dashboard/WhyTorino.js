@@ -14,13 +14,13 @@ const WhyTorino = () => {
 
   return (
     <div className="w-[1182px] h-[676px] m-auto flex flex-row-reverse justify-between">
-      <div className="w-[50%]">
-        <p>
-          <span>?</span>
+      <div className="w-[50%] flex flex-col justify-center items-end">
+        <p className="font-extrabold text-5xl">
           {Why_Torino.Text.title}
+          <span className="px-4 py-1 text-4xl font-black text-white bg-[#10411B] rounded-full ml-3.5">?</span>
         </p>
-        <span>{Why_Torino.Text.header}</span>
-        <p>{Why_Torino.Text.description}</p>
+        <span className="mt-10 text-2xl">{Why_Torino.Text.header}</span>
+        <p className="text-[#282828] text-xl mt-5 text-right leading-loose">{Why_Torino.Text.description}</p>
       </div>
       {/* slidebar */}
       <div className="w-[50%] flex flex-col justify-center">
