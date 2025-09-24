@@ -6,15 +6,42 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
 const Search = () => {
-  const [from, setFrom] = useState(null);
-  const [to, setTo] = useState(null);
   const [dates, setDates] = useState([]);
-  const cities = ["تهران", "سنندج", "تبریز", "شیراز"];
-
   const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
   const [selected, setSelected] = useState(null);
+  const [selected1, setSelected1] = useState(null);
 
-  const options = ["تهران", "سنندج", "تبریز", "شیراز"];
+  const options = [
+    "تهران",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+    "سنندج",
+    "تبریز",
+    "شیراز",
+  ];
 
   return (
     <div className="m-auto my-12 w-[1180] flex flex-col items-center">
@@ -23,12 +50,11 @@ const Search = () => {
         های داخلی و خارجی
       </p>
 
-      <div className="w-[874px] h-[71px] flex flex-row-reverse items-center border border-black/15 rounded-3xl p-5 my-5">
+      <div className="w-[874px] h-[71px] relative flex flex-row-reverse items-center border border-black/15 rounded-3xl p-5 my-5">
         {/* مبدا */}
-
         <button
           onClick={() => setOpen(!open)}
-          className="w-[218px] flex flex-row-reverse "
+          className="w-[218px] flex flex-row-reverse"
         >
           <div className="flex items-center gap-2 text-gray-700">
             <span>{selected ? selected : "مبدا"}</span>
@@ -38,16 +64,17 @@ const Search = () => {
 
         {/* لیست گزینه‌ها */}
         {open && (
-          <div className="absolute top-full right-0 mt-2 w-[218px] rounded-xl border bg-white shadow-lg z-10">
-            {options.map((city) => (
+          <div className="w-[218px] h-[251px] border border-black/20 rounded-lg bg-white scroll-hide overflow-auto absolute top-[80px]">
+            {options.map((city, i) => (
               <button
-                key={city}
+                key={i}
                 onClick={() => {
                   setSelected(city);
                   setOpen(false);
                 }}
-                className="w-full text-right px-4 py-2 hover:bg-gray-100"
+                className="w-[100%] flex flex-row-reverse items-center py-2 my-3 border-b-1 border-black/12 hover:bg-gray-100"
               >
+                <FaMapMarkerAlt className="text-gray-500 mx-1.5" />
                 {city}
               </button>
             ))}
@@ -55,28 +82,37 @@ const Search = () => {
         )}
 
         {/* مقصد */}
-        <div className="relative w-full md:w-1/4 text-right">
-          <button className="w-full flex items-center justify-between rounded-xl border px-4 py-3 shadow-sm focus:ring-2 focus:ring-green-500 bg-white">
-            <div className="flex items-center gap-2 text-gray-700">
-              <FaMapMarkerAlt className="text-gray-500" />
-              <select
-                className="bg-transparent outline-none"
-                value={to || ""}
-                onChange={(e) => setTo(e.target.value)}
+        <button
+          onClick={() => setOpen1(!open1)}
+          className="w-[218px] flex flex-row-reverse border-x-1 border-black/15 px-1.5"
+        >
+          <div className="flex items-center gap-2 text-gray-700">
+            <span>{selected1 ? selected1 : "مقصد"}</span>
+            <FaMapMarkerAlt className="text-gray-500" />
+          </div>
+        </button>
+
+        {/* لیست گزینه‌ها */}
+        {open && (
+          <div className="w-[218px] h-[251px] border border-black/20 rounded-lg bg-white scroll-hide overflow-auto absolute top-[80px] right-[250px]">
+            {options.map((city, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  setSelected1(city);
+                  setOpen1(false);
+                }}
+                className="w-[100%] flex flex-row-reverse items-center py-2 my-3 border-b-1 border-black/12 hover:bg-gray-100"
               >
-                <option value="">مقصد</option>
-                {cities.map((city) => (
-                  <option key={city} value={city}>
-                    {city}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </button>
-        </div>
+                <FaMapMarkerAlt className="text-gray-500 mx-1.5" />
+                {city}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* انتخاب تاریخ شمسی (رفت و برگشت) */}
-        <div className="relative w-full md:w-1/3 text-right">
+        <div className="w-[218px] relative text-right p-3">
           <DatePicker
             range
             value={dates}
@@ -84,12 +120,11 @@ const Search = () => {
             calendar={persian}
             locale={persian_fa}
             className="custom-calendar"
-            inputClass="w-full px-4 py-3 border rounded-xl shadow-sm focus:ring-2 focus:ring-green-500"
-            placeholder="تاریخ رفت و برگشت"
+            inputClass="w-[100%] text-right "
+            placeholder="تاریخ"
           />
         </div>
-
-        <button className="w-full md:w-1/6 bg-green-500 text-white py-3 rounded-xl shadow hover:bg-green-600 transition">
+        <button className="w-[190px] h-[51px] bg-[#28A745] text-white rounded-2xl">
           جستجو
         </button>
       </div>
