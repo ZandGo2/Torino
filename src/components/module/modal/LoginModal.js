@@ -1,6 +1,6 @@
 "use client";
 import { AuthContext } from "@/context/AuthContext";
-import { useLoginMutation } from "@/services/authService";
+import { useLoginMutation } from "@/services/authServices";
 import { notify } from "@/utils/tostify";
 import { useContext } from "react";
 

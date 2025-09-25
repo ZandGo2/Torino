@@ -1,7 +1,7 @@
 "use client";
 import { AuthContext } from "@/context/AuthContext";
 import { useContext, useEffect, useState } from "react";
-import { useCheckOtpMutation, useLoginMutation } from "@/services/authService";
+import { useCheckOtpMutation, useLoginMutation } from "@/services/authServices";
 import { notify } from "@/utils/tostify";
 import OtpInput from "react-otp-input";
 
