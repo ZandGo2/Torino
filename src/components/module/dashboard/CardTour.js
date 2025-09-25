@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const CardTour = ({ title, image, options, price }) => {
   return (
-    <div className="w-[278] border border-black/15 rounded-xl flex flex-col items-end m-2">
+    <div className="w-[278] border border-black/15 rounded-xl flex flex-col items-end m-2  transition-transform hover:scale-105">
       <Link href="/">
         <Image
           src={image}
