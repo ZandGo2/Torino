@@ -13,7 +13,7 @@ const Phone = () => {
         />
         <div className="w-[50%] flex flex-col justify-center items-center">
           <p className="text-5xl font-extrabold text-white text-right">
-            خرید تلفی از
+            خرید تلفنی از
             <span className="text-[#10411B] mr-4">تورینو</span>
           </p>
           <p className=" font-normal text-3xl mt-5 text-right">
@@ -22,7 +22,7 @@ const Phone = () => {
         </div>
       </div>
       <div className="w-[30%] h-[100%] flex flex-col justify-center items-center">
-        <p className="flex items-center mb-6">
+        <p className="flex items-center mb-6 cursor-pointer">
           <Image
             src="/images/call1.png"
             alt="phone icons"

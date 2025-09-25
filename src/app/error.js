@@ -8,7 +8,7 @@ const Error = () => {
       <div className="text-right">
         <h3 className="text-4xl font-semibold">! اتصال با سرور برقرار نیست</h3>
         <p className="text-2xl font-semibold mt-8">
-          لطفا بعدا دوباره امتحان کنید.
+          .لطفا بعدا دوباره امتحان کنید
         </p>
       </div>
     </div>

@@ -12,14 +12,14 @@ const Footer = () => {
       <section className="w-[1180px] h-[290px] m-auto p-2 flex flex-row-reverse items-center justify-between border-t border-solid border-black/20">
         <div className="w-[25%] flex flex-row-reverse justify-between">
           <div className="flex flex-col text-right">
-            <p className="text-2xl font-semibold mb-6">
+            <p className="text-2xl font-semibold mb-6 cursor-pointer">
               {FOOTER_SECTIONS.First_Section.title}
             </p>
             <ul>
               {FOOTER_SECTIONS.First_Section.links.map((item, index) => (
                 <li
                   key={index}
-                  className="font-normal text-lg text-[#282828] mt-1"
+                  className="font-normal text-lg text-[#282828] mt-1 cursor-pointer"
                 >
                   {item.label}
                 </li>
@@ -27,14 +27,14 @@ const Footer = () => {
             </ul>
           </div>
           <div className="flex flex-col text-right">
-            <p className="text-2xl font-semibold mb-6">
+            <p className="text-2xl font-semibold mb-6 cursor-pointer">
               {FOOTER_SECTIONS.Second_Section.title}
             </p>
             <ul>
               {FOOTER_SECTIONS.Second_Section.links.map((item, index) => (
                 <li
                   key={index}
-                  className="font-normal text-lg text-[#282828] mt-1"
+                  className="font-normal text-lg text-[#282828] mt-1 cursor-pointer"
                 >
                   {item.label}
                 </li>
@@ -49,13 +49,16 @@ const Footer = () => {
               alt={FOOTER_CONTACT.altText}
               width={FOOTER_CONTACT.logoWidth}
               height={FOOTER_CONTACT.logoHeight}
+              className="cursor-pointer"
             />
-            <p className="mt-6">تلفن پشتیبانی : {FOOTER_CONTACT.phone}</p>
+            <p className="mt-6 cursor-pointer">
+              تلفن پشتیبانی : {FOOTER_CONTACT.phone}
+            </p>
           </div>
           <div className="w-[70%] flex flex-row-reverse justify-between">
             {FOOTER_TRUST_ICONS.map((icon, index) => (
               <Image
-                className=""
+                className="cursor-pointer"
                 key={index}
                 src={icon.src}
                 alt={icon.alt}
