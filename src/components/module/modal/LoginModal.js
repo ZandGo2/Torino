@@ -32,7 +32,7 @@ const Login = () => {
 
   if (statusLogin.step !== "login") return null;
   return (
-    <div className="flex flex-col mt-56">
+    <div className="flex items-center justify-center fixed inset-0 z-[100]">
       <div>
         <button onClick={closeHandler}>X</button>
       </div>
