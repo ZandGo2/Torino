@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 import { Why_Torino } from "@/constants/DataTorinoWhy";
 
 const WhyTorino = () => {
@@ -17,29 +17,34 @@ const WhyTorino = () => {
       <div className="w-[50%] flex flex-col justify-center items-end">
         <p className="font-extrabold text-5xl">
           {Why_Torino.Text.title}
-          <span className="px-4 py-1 text-4xl font-black text-white bg-[#10411B] rounded-full ml-3.5">?</span>
+          <span className="px-4 py-1 text-4xl font-black text-white bg-[#10411B] rounded-full ml-3.5">
+            ?
+          </span>
         </p>
         <span className="mt-10 text-2xl">{Why_Torino.Text.header}</span>
-        <p className="text-[#282828] text-xl mt-5 text-right leading-loose">{Why_Torino.Text.description}</p>
+        <p className="text-[#282828] text-xl mt-5 text-right leading-loose">
+          {Why_Torino.Text.description}
+        </p>
       </div>
       {/* slidebar */}
       <div className="w-[50%] flex flex-col justify-center">
-        <div className="w-[50%] flex flex-col items-center justify-center relative">
-          <div className="relative w-[400px] h-[500px] flex items-center justify-start overflow-hidden">
+        <div className="w-[50%] flex flex-col items-center justify-center">
+          <div className=" w-[400px] h-[500px] flex items-center justify-start">
             {Why_Torino.swiper.map((item, i) => {
-              const offset = i - step; // فاصله نسبت به عکس فعال
-              if (offset < 0 || offset > 2) return null; // فقط سه عکس جلو دیده شوند
+              let offset = i - step;
+              if (offset < 0) offset += total;
+              if (offset > 3) return null;
 
-              const scale = 1 - 0.15 * offset; // عکس عقب کوچک‌تر
-              const translateX = offset * 120; // فاصله افقی بین عکس‌ها
-              const zIndex = 10 - offset; // جلوترها روی عکس‌های عقب‌تر
+              const scale = 1 - 0.1 * offset;
+              const translateX = offset * -70;
+              const zIndex = 7 - offset;
 
               return (
                 <div
                   key={i}
                   className="absolute transition-all duration-500 ease-in-out"
                   style={{
-                    transform: `translateX(${translateX}px) scale(${scale})`,
+                    transform:`translateX(${translateX}px) scale(${scale})`,
                     zIndex,
                   }}
                 >

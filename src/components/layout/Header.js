@@ -1,11 +1,20 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { HEADER_LINKS } from "@/constants/DataHeader.js";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 const Header = () => {
+  const { statusLogin, dispatch } = useContext(AuthContext);
+
+  const ClickHandler = () => {
+    dispatch({ type: "OPEN_LOGIN" });
+  };
+
   return (
     <header className="flex justify-center">
-      <div className="w-[100%] h-[74px] rounded-b-lg shadow-xl fixed bg-white opacity-100">
+      <div className="w-[100%] h-[74px] rounded-b-lg shadow-xl fixed bg-white opacity-100 z-50">
         <div className="w-[1440px] flex flex-row-reverse m-auto items-center justify-between p-2">
           <div className="w-[70%] flex flex-row-reverse items-center justify-between">
             <div>
@@ -26,7 +35,10 @@ const Header = () => {
             </div>
           </div>
           <div>
-            <button className="p-2 flex flex-row-reverse items-center text-[#28A745] border border-solid border-[#28A745] rounded-lg cursor-pointer">
+            <button
+              onClick={ClickHandler}
+              className="p-2 flex flex-row-reverse items-center text-[#28A745] border border-solid border-[#28A745] rounded-lg cursor-pointer"
+            >
               <Image
                 src="/images/Login.png"
                 alt="profile"
