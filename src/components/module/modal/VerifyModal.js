@@ -57,20 +57,27 @@ const VerifyModal = () => {
   return (
     <div>
       <div>
-        <button onClick={backStepHandler}>--</button>
+        <div>
+          <button onClick={backStepHandler}>--</button>
+        </div>
+        <div>
+          <OtpInput
+            value={otp}
+            onChange={setOtp}
+            numInputs={5}
+            renderSeparator={<span>-</span>}
+            renderInput={(props) => <input {...props} />}
+          />
+          <p>{timer === 0 ? "ارسال مجدد کد" : timer}</p>
+          <button onClick={timerHandler}>send again</button>
+        </div>
+        <button
+          className="bg-[#28A745] text-white w-[491px] h-[54px] mt-7 rounded-lg text-lg font-medium"
+          onClick={loginHandler}
+        >
+          ورود به تورینو
+        </button>
       </div>
-      <div>
-        <OtpInput
-          value={otp}
-          onChange={setOtp}
-          numInputs={5}
-          renderSeparator={<span>-</span>}
-          renderInput={(props) => <input {...props} />}
-        />
-        <p>{timer === 0 ? "ارسال مجدد کد" : timer}</p>
-        <button onClick={timerHandler}>send again</button>
-      </div>
-      <button onClick={loginHandler}>ورود به تورینو</button>
     </div>
   );
 };
