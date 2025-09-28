@@ -3,6 +3,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { useCheckOtpMutation, useLoginMutation } from "@/services/authServices";
 import { notify } from "@/utils/tostify";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import OtpInput from "react-otp-input";
 
 const VerifyModal = () => {
@@ -55,12 +56,16 @@ const VerifyModal = () => {
 
   if (statusLogin.step !== "verify") return null;
   return (
-    <div>
-      <div>
+    <div className="flex items-center justify-center fixed inset-0 z-[100] w-[100%] h-[100%] bg-black/50">
+      <div className="w-[561px] h-[362px] bg-white rounded-3xl flex flex-col justify-between p-5">
         <div>
-          <button onClick={backStepHandler}>--</button>
+          <button className="cursor-pointer" onClick={backStepHandler}>
+            <MdOutlineKeyboardBackspace />
+          </button>
         </div>
-        <div>
+        <div className="flex flex-col items-center h-[80%]">
+          <p className="text-3xl font-semibold mb-3.5">.کد تایید را وارد کنید</p>
+          <p className="text-[#282828] font-normal text-base mb-2.5">کد تایید به شماره {statusLogin.mobile} ارسال شد</p>
           <OtpInput
             value={otp}
             onChange={setOtp}
@@ -69,14 +74,14 @@ const VerifyModal = () => {
             renderInput={(props) => <input {...props} />}
           />
           <p>{timer === 0 ? "ارسال مجدد کد" : timer}</p>
-          <button onClick={timerHandler}>send again</button>
+          <button onClick={timerHandler} className="cursor-pointer">send again</button>
+          <button
+            className="bg-[#28A745] text-white w-[491px] h-[54px] mt-7 rounded-lg text-lg font-medium"
+            onClick={loginHandler}
+          >
+            ورود به تورینو
+          </button>
         </div>
-        <button
-          className="bg-[#28A745] text-white w-[491px] h-[54px] mt-7 rounded-lg text-lg font-medium"
-          onClick={loginHandler}
-        >
-          ورود به تورینو
-        </button>
       </div>
     </div>
   );
