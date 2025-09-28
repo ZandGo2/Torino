@@ -64,8 +64,12 @@ const VerifyModal = () => {
           </button>
         </div>
         <div className="flex flex-col items-center h-[80%]">
-          <p className="text-3xl font-semibold mb-3.5">.کد تایید را وارد کنید</p>
-          <p className="text-[#282828] font-normal text-base mb-2.5">کد تایید به شماره {statusLogin.mobile} ارسال شد</p>
+          <p className="text-3xl font-semibold mb-3.5">
+            .کد تایید را وارد کنید
+          </p>
+          <p className="text-[#282828] font-normal text-base mb-2.5">
+            کد تایید به شماره {statusLogin.mobile} ارسال شد
+          </p>
           <OtpInput
             value={otp}
             onChange={setOtp}
@@ -73,8 +77,12 @@ const VerifyModal = () => {
             renderSeparator={<span>-</span>}
             renderInput={(props) => <input {...props} />}
           />
-          <p>{timer === 0 ? "ارسال مجدد کد" : timer}</p>
-          <button onClick={timerHandler} className="cursor-pointer">send again</button>
+          <p>{timer !== 0 && timer}</p>
+          {timer === 0 && (
+            <button onClick={timerHandler} className="cursor-pointer">
+              ارسال مجدد کد
+            </button>
+          )}
           <button
             className="bg-[#28A745] text-white w-[491px] h-[54px] mt-7 rounded-lg text-lg font-medium"
             onClick={loginHandler}
