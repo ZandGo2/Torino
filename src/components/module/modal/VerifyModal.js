@@ -31,7 +31,7 @@ const VerifyModal = () => {
   useEffect(() => {
     if (timer === 0) return;
     // problems
-    if (statusLogin.code && timer === 10) {
+    if (statusLogin.code) {
       setTimeout(() => {
         notify("info", statusLogin.code);
       }, 5000);
@@ -74,8 +74,8 @@ const VerifyModal = () => {
             value={otp}
             onChange={setOtp}
             numInputs={5}
-            renderSeparator={<span>-</span>}
-            renderInput={(props) => <input {...props} />}
+            renderSeparator={<span></span>}
+            renderInput={(props) => <input {...props} className="w-[58px] h-[53px] rounded-md border border-black/25 text-center focus:outline-none focus:border-blue-500" />}
           />
           <p>{timer !== 0 && timer}</p>
           {timer === 0 && (
