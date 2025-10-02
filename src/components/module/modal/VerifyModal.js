@@ -75,16 +75,21 @@ const VerifyModal = () => {
             onChange={setOtp}
             numInputs={5}
             renderSeparator={<span></span>}
-            renderInput={(props) => <input {...props} className="w-[58px] h-[53px] rounded-md border border-black/25 text-center focus:outline-none focus:border-blue-500" />}
+            renderInput={(props) => (
+              <input
+                {...props}
+                className="!w-[58px] !h-[53px] mx-2 rounded-md border border-black/25 text-center focus:outline-none focus:border-blue-500"
+              />
+            )}
           />
-          <p>{timer !== 0 && timer}</p>
+          <p className="mt-3">{timer !== 0 && timer}</p>
           {timer === 0 && (
-            <button onClick={timerHandler} className="cursor-pointer">
+            <button onClick={timerHandler} className="cursor-pointer mt-3">
               ارسال مجدد کد
             </button>
           )}
           <button
-            className="bg-[#28A745] text-white w-[491px] h-[54px] mt-7 rounded-lg text-lg font-medium"
+            className="bg-[#28A745] text-white w-[491px] h-[54px] mt-4 rounded-lg text-lg font-medium"
             onClick={loginHandler}
           >
             ورود به تورینو
