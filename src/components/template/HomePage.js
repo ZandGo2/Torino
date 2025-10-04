@@ -5,8 +5,8 @@ import Phone from "../module/dashboard/Phone";
 import WhyTorino from "../module/dashboard/WhyTorino";
 import TrustIcons from "../module/dashboard/TrustIcons";
 
-const HomePage = ({data}) => {
-  console.log(data)
+const HomePage = ({ data }) => {
+  console.log(data);
   return (
     <div className="mt-[75]">
       <Image
@@ -15,7 +15,7 @@ const HomePage = ({data}) => {
         width={1440}
         height={350}
         className="m-auto"
-        priority 
+        priority
       />
       <Search />
       <div className="w-[1180] m-auto flex flex-row-reverse mt-10">

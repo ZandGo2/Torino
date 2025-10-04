@@ -7,10 +7,12 @@ import persian_fa from "react-date-object/locales/persian_fa";
 
 const Search = () => {
   const [dates, setDates] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
-  const [selected, setSelected] = useState(null);
-  const [selected1, setSelected1] = useState(null);
+  const [searchState, setSearchState] = useState({
+    origin: null, // مبدا
+    destination: null,
+    originOpen: false,
+    destinationOpen: false,
+  });
 
   const options = [
     "تهران",
@@ -53,25 +55,33 @@ const Search = () => {
       <div className="w-[874px] h-[71px] relative flex flex-row-reverse items-center border border-black/15 rounded-3xl p-5 my-5">
         {/* مبدا */}
         <button
-          onClick={() => setOpen(!open)}
+          onClick={() =>
+            setSearchState((prev) => ({
+              ...prev,
+              originOpen: true,
+            }))
+          }
           className="w-[218px] flex flex-row-reverse"
         >
           <div className="flex items-center gap-2 text-gray-700">
-            <span>{selected ? selected : "مبدا"}</span>
+            <span> {searchState.origin ? searchState.origin : "مبدا"}</span>
             <FaMapMarkerAlt className="text-gray-500" />
           </div>
         </button>
 
         {/* لیست گزینه‌ها */}
-        {open && (
+        {searchState.originOpen && (
           <div className="w-[218px] h-[251px] border border-black/20 rounded-lg bg-white scroll-hide overflow-auto absolute top-[80px]">
             {options.map((city, i) => (
               <button
                 key={i}
-                onClick={() => {
-                  setSelected(city);
-                  setOpen(false);
-                }}
+                onClick={() =>
+                  setSearchState((prev) => ({
+                    ...prev,
+                    origin: city,
+                    originOpen: false,
+                  }))
+                }
                 className="w-[100%] flex flex-row-reverse items-center py-2 my-3 border-b-1 border-black/12 hover:bg-gray-100"
               >
                 <FaMapMarkerAlt className="text-gray-500 mx-1.5" />
@@ -83,25 +93,36 @@ const Search = () => {
 
         {/* مقصد */}
         <button
-          onClick={() => setOpen1(!open1)}
+          onClick={() =>
+            setSearchState((prev) => ({
+              ...prev,
+              destinationOpen: !prev.destinationOpen,
+            }))
+          }
           className="w-[218px] flex flex-row-reverse border-x-1 border-black/15 px-1.5"
         >
           <div className="flex items-center gap-2 text-gray-700">
-            <span>{selected1 ? selected1 : "مقصد"}</span>
+            <span>
+              {" "}
+              {searchState.destination ? searchState.destination : "مقصد"}
+            </span>
             <FaMapMarkerAlt className="text-gray-500" />
           </div>
         </button>
 
         {/* لیست گزینه‌ها */}
-        {open && (
+        {searchState.destinationOpen && (
           <div className="w-[218px] h-[251px] border border-black/20 rounded-lg bg-white scroll-hide overflow-auto absolute top-[80px] right-[250px]">
             {options.map((city, i) => (
               <button
                 key={i}
-                onClick={() => {
-                  setSelected1(city);
-                  setOpen1(false);
-                }}
+                onClick={() =>
+                  setSearchState((prev) => ({
+                    ...prev,
+                    destination: city,
+                    destinationOpen: false,
+                  }))
+                }
                 className="w-[100%] flex flex-row-reverse items-center py-2 my-3 border-b-1 border-black/12 hover:bg-gray-100"
               >
                 <FaMapMarkerAlt className="text-gray-500 mx-1.5" />
