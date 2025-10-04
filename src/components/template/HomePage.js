@@ -5,58 +5,8 @@ import Phone from "../module/dashboard/Phone";
 import WhyTorino from "../module/dashboard/WhyTorino";
 import TrustIcons from "../module/dashboard/TrustIcons";
 
-const data = [
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-  {
-    image: "/images/1.jpg",
-    title: "هولر",
-    price: 105000,
-    options: ["نهار و صبحانه", " هفل پنج ستاره"],
-  },
-];
-
-const HomePage = () => {
+const HomePage = ({data}) => {
+  console.log(data)
   return (
     <div className="mt-[75]">
       <Image
@@ -65,6 +15,7 @@ const HomePage = () => {
         width={1440}
         height={350}
         className="m-auto"
+        priority 
       />
       <Search />
       <div className="w-[1180] m-auto flex flex-row-reverse mt-10">

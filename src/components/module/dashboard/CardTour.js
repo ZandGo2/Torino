@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const CardTour = ({ title, image, options, price }) => {
+const CardTour = ({ title, id, image, options, price }) => {
   return (
     <div className="w-[278] border border-black/15 rounded-xl flex flex-col items-end m-2  transition-transform hover:scale-105">
       <Link href="/">
@@ -15,7 +15,11 @@ const CardTour = ({ title, image, options, price }) => {
         <div className="flex flex-col items-end px-2">
           <h2 className="text-2xl font-normal mt-1.5">{title}</h2>
           <p className="text-base font-normal mt-1.5 text-[#282828B2]">
-            {options}
+            {options.map((opt, i) => (
+              <span className={i == 1 ? "mr-2" : ""} key={i}>
+                {opt}
+              </span>
+            ))}
           </p>
         </div>
         <div className="w-[100%] my-2 p-2 flex flex-row-reverse justify-between border-t-1 border-black/12">
