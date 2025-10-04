@@ -7,6 +7,7 @@ import TrustIcons from "../module/dashboard/TrustIcons";
 
 const HomePage = ({ data }) => {
   console.log(data);
+
   return (
     <div className="mt-[75]">
       <Image
@@ -17,7 +18,7 @@ const HomePage = ({ data }) => {
         className="m-auto"
         priority
       />
-      <Search />
+      <Search data={data} />
       <div className="w-[1180] m-auto flex flex-row-reverse mt-10">
         <h2 className="text-4xl font-normal mb-3.5">همه تور ها</h2>
       </div>

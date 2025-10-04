@@ -3,6 +3,6 @@ import { getTourList } from "@/services/tourListService";
 
 export default async function Home() {
   const data = await getTourList();
-  console.log(data)
+  console.log(data);
   return <HomePage data={data} />;
 }

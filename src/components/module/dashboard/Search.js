@@ -5,7 +5,7 @@ import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
-const Search = () => {
+const Search = ({ data }) => {
   const [dates, setDates] = useState([]);
   const [searchState, setSearchState] = useState({
     origin: null, // مبدا
@@ -14,37 +14,8 @@ const Search = () => {
     destinationOpen: false,
   });
 
-  const options = [
-    "تهران",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-    "سنندج",
-    "تبریز",
-    "شیراز",
-  ];
-
+  const origins = [...new Set(data.map((tour) => tour.origin.name))];
+  const destinations = [...new Set(data.map((tour) => tour.destination.name))];
   return (
     <div className="m-auto my-12 w-[1180] flex flex-col items-center">
       <p className="text-3xl font-semibold text-[#595959] my-5">
@@ -58,7 +29,7 @@ const Search = () => {
           onClick={() =>
             setSearchState((prev) => ({
               ...prev,
-              originOpen: true,
+              originOpen: !prev.originOpen,
             }))
           }
           className="w-[218px] flex flex-row-reverse"
@@ -72,7 +43,7 @@ const Search = () => {
         {/* لیست گزینه‌ها */}
         {searchState.originOpen && (
           <div className="w-[218px] h-[251px] border border-black/20 rounded-lg bg-white scroll-hide overflow-auto absolute top-[80px]">
-            {options.map((city, i) => (
+            {origins.map((city, i) => (
               <button
                 key={i}
                 onClick={() =>
@@ -113,7 +84,7 @@ const Search = () => {
         {/* لیست گزینه‌ها */}
         {searchState.destinationOpen && (
           <div className="w-[218px] h-[251px] border border-black/20 rounded-lg bg-white scroll-hide overflow-auto absolute top-[80px] right-[250px]">
-            {options.map((city, i) => (
+            {destinations.map((city, i) => (
               <button
                 key={i}
                 onClick={() =>
