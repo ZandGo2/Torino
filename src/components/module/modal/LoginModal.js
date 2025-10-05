@@ -1,13 +1,12 @@
 "use client";
 import { AuthContext } from "@/context/AuthContext";
-import { useLoginMutation } from "@/services/authServices";
-import { notify } from "@/utils/tostify";
 import { IoCloseSharp } from "react-icons/io5";
 import { useContext } from "react";
+import { useLoginHandler } from "@/hooks/useLoginHandler";
 
 const Login = () => {
   const { statusLogin, dispatch } = useContext(AuthContext);
-  const { mutate, data, error, isLoading, isSuccess } = useLoginMutation();
+  const { clickHandler, isLoading } = useLoginHandler();
 
   const changeHandler = (e) => {
     dispatch({ type: "SET_PHONE", payload: e.target.value });
@@ -15,19 +14,6 @@ const Login = () => {
 
   const closeHandler = () => {
     dispatch({ type: "ClOSE" });
-  };
-
-  const clickHandler = () => {
-    try {
-      mutate(statusLogin.mobile);
-      dispatch({ type: "SET_CODE", payload: data.code });
-      notify("info", data.message);
-      setTimeout(() => {
-        dispatch({ type: "OPEN_VERIFY" });
-      }, 2000);
-    } catch (error) {
-      notify("error", error.message);
-    }
   };
 
   if (statusLogin.step !== "login") return null;
@@ -57,6 +43,7 @@ const Login = () => {
           <button
             className="bg-[#28A745] text-white w-[491px] h-[54px] mt-7 rounded-lg text-lg font-medium"
             onClick={clickHandler}
+            disabled={isLoading}
           >
             ارسال کد تایید
           </button>

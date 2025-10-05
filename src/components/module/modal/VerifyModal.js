@@ -5,27 +5,17 @@ import { useCheckOtpMutation, useLoginMutation } from "@/services/authServices";
 import { notify } from "@/utils/tostify";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import OtpInput from "react-otp-input";
+import { useLoginHandler } from "@/hooks/useLoginHandler";
 
 const VerifyModal = () => {
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(10);
   const { statusLogin, dispatch } = useContext(AuthContext);
-  const { mutate, data, error, isLoading, isSuccess } = useCheckOtpMutation();
-  const loginApiMutation = useLoginMutation();
+  const { mutate, data, error, isLoading1, isSuccess } = useCheckOtpMutation();
+  const { clickHandler, isLoading } = useLoginHandler();
 
   const backStepHandler = () => {
     dispatch({ type: "OPEN_LOGIN" });
-  };
-
-  const timerHandler = () => {
-    try {
-      loginApiMutation.mutate(statusLogin.mobile);
-      dispatch({ type: "SET_CODE", payload: loginApiMutation.data.code });
-      notify("info", loginApiMutation.data.code);
-    } catch (error) {
-      notify("error", loginApiMutation.error.message);
-    }
-    setTimer(10);
   };
 
   useEffect(() => {
@@ -84,7 +74,11 @@ const VerifyModal = () => {
           />
           <p className="mt-3">{timer !== 0 && timer}</p>
           {timer === 0 && (
-            <button onClick={timerHandler} className="cursor-pointer mt-3">
+            <button
+              onClick={clickHandler}
+              disabled={isLoading}
+              className="cursor-pointer mt-3"
+            >
               ارسال مجدد کد
             </button>
           )}
