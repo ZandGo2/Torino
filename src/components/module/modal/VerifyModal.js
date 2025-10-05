@@ -1,11 +1,11 @@
 "use client";
-import { AuthContext } from "@/context/AuthContext";
-import { useContext, useEffect, useState } from "react";
 import { useCheckOtpMutation, useLoginMutation } from "@/services/authServices";
-import { notify } from "@/utils/tostify";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
-import OtpInput from "react-otp-input";
 import { useLoginHandler } from "@/hooks/useLoginHandler";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { notify } from "@/utils/tostify";
+import OtpInput from "react-otp-input";
 
 const VerifyModal = () => {
   const [otp, setOtp] = useState("");
@@ -19,26 +19,34 @@ const VerifyModal = () => {
   };
 
   useEffect(() => {
-    if (timer === 0) return;
-    // problems
-    if (statusLogin.code) {
-      setTimeout(() => {
-        notify("info", statusLogin.code);
-      }, 5000);
-    }
+    if (timer <= 0) return;
     const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
+      setTimer((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
     return () => clearInterval(interval);
-  }, [timer]);
+  }, []);
+
+  const resendHandler = () => {
+    clickHandler();
+    setTimer(10);
+  };
 
   const loginHandler = () => {
     try {
-      mutate({ mobile: statusLogin.mobile, code: statusLogin.code });
-      notify("success", data.message);
-      setTimeout(() => {
-        dispatch({ type: "CLOSE" });
-      }, 2000);
+      mutate(
+        { mobile: statusLogin.mobile, code: otp },
+        {
+          onSuccess: (data) => {
+            notify("info", data.message);
+            setTimeout(() => {
+              dispatch({ type: "CLOSE" });
+            }, 2000);
+          },
+          onError: (error) => {
+            notify("error", error.message);
+          },
+        }
+      );
     } catch (error) {
       notify("error", error.message);
     }
@@ -63,7 +71,7 @@ const VerifyModal = () => {
           <OtpInput
             value={otp}
             onChange={setOtp}
-            numInputs={5}
+            numInputs={6}
             renderSeparator={<span></span>}
             renderInput={(props) => (
               <input
@@ -75,7 +83,7 @@ const VerifyModal = () => {
           <p className="mt-3">{timer !== 0 && timer}</p>
           {timer === 0 && (
             <button
-              onClick={clickHandler}
+              onClick={resendHandler}
               disabled={isLoading}
               className="cursor-pointer mt-3"
             >

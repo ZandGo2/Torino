@@ -1,10 +1,13 @@
 export const validate = (type, data) => {
-  const error = {};
+  const errors = {};
+
   if (type === "login") {
-    if (!data || data.length !== 11) {
-      error.mobile = "شماره تلفن صحیح نمی‌باشد";
+    if (!value) {
+      errors.mobile = "شماره موبایل الزامی است";
+    } else if (!/^09\d{9}$/.test(value)) {
+      errors.mobile = "شماره موبایل معتبر نیست";
     }
   }
 
-  return error;
+  return errors;
 };

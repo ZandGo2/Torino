@@ -13,7 +13,7 @@ export const useLoginMutation = () => {
 
 export const useCheckOtpMutation = () => {
   return useMutation({
-    mutationFn: async ({ data: { mobile, code } }) => {
+    mutationFn: async ({ mobile, code }) => {
       const response = await axiosInstance.post("/auth/check-otp", {
         mobile,
         code,
