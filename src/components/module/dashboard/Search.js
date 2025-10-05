@@ -1,21 +1,20 @@
 "use client";
-import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
-const Search = ({ data }) => {
-  const [dates, setDates] = useState([]);
-  const [searchState, setSearchState] = useState({
-    origin: null, // مبدا
-    destination: null,
-    originOpen: false,
-    destinationOpen: false,
-  });
-
-  const origins = [...new Set(data.map((tour) => tour.origin.name))];
-  const destinations = [...new Set(data.map((tour) => tour.destination.name))];
+const Search = ({
+  data: {
+    dates,
+    setDates,
+    searchState,
+    setSearchState,
+    origins,
+    destinations,
+    searchHandler,
+  },
+}) => {
   return (
     <div className="m-auto my-12 w-[1180] flex flex-col items-center">
       <p className="text-3xl font-semibold text-[#595959] my-5">
@@ -116,7 +115,10 @@ const Search = ({ data }) => {
             placeholder="تاریخ"
           />
         </div>
-        <button className="w-[190px] h-[51px] bg-[#28A745] text-white rounded-2xl">
+        <button
+          className="w-[190px] h-[51px] bg-[#28A745] text-white rounded-2xl"
+          onClick={searchHandler}
+        >
           جستجو
         </button>
       </div>

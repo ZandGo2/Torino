@@ -1,11 +1,12 @@
 import Image from "next/image";
-import Search from "../module/dashboard/Search";
-import CardTour from "../module/dashboard/CardTour";
 import Phone from "../module/dashboard/Phone";
 import WhyTorino from "../module/dashboard/WhyTorino";
 import TrustIcons from "../module/dashboard/TrustIcons";
+import SearchListTour from "./SearchListTour";
+import { getTourList } from "@/services/tourListService";
 
-const HomePage = ({ data }) => {
+const HomePage = async () => {
+  const data = await getTourList();
   console.log(data);
 
   return (
@@ -18,15 +19,7 @@ const HomePage = ({ data }) => {
         className="m-auto"
         priority
       />
-      <Search data={data} />
-      <div className="w-[1180] m-auto flex flex-row-reverse mt-10">
-        <h2 className="text-4xl font-normal mb-3.5">همه تور ها</h2>
-      </div>
-      <div className="w-[1180] m-auto flex flex-wrap flex-row justify-between">
-        {data.map((tour, i) => (
-          <CardTour key={i} {...tour} />
-        ))}
-      </div>
+      <SearchListTour data={data} />
       <Phone />
       <WhyTorino />
       <TrustIcons />
