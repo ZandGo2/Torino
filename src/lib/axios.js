@@ -1,9 +1,5 @@
 import axios from "axios";
-import Cookies from "js-cookie";
-// import { AuthContext } from "@/context/AuthContext";
 import { notify } from "@/utils/tostify";
-
-// const { accessToken, setAccessToken } = AuthContext();
 
 const axiosInstance = axios.create({
   // baseURL: process.env.BASE_URL,
@@ -16,12 +12,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    // const token = Cookies.get("access_token");
-    // const token = accessToken;
-
     const token = localStorage.getItem("accessToken");
-    const refreshToken = localStorage.getItem("refreshToken");
-
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
@@ -33,18 +24,40 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response && error.status == 401) {
-      const messageError = error.response.data.message || "";
-      notify("error", messageError);
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config;
 
-      // Cookies.remove("access_token");
-      // open modal login
-      // dispatch({ type: "OPEN_LOGIN" });
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      try {
+        const refreshToken = localStorage.getItem("refreshToken");
+        const { data } = await axios.post(
+          "http://localhost:6500/auth/refresh-token",
+          {
+            refreshToken,
+          }
+        );
+
+        localStorage.setItem("accessToken", data.accessToken);
+
+        originalRequest.headers["Authorization"] = `Bearer ${data.accessToken}`;
+
+        return axiosInstance(originalRequest);
+      } catch (err) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        notify("error", "نشست شما منقضی شده است، لطفاً دوباره وارد شوید");
+        return Promise.reject(err);
+      }
     }
+
+    if (error.response.status === 403) {
+      notify("error", error.response.data.message);
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
+    }
+
     return Promise.reject(error);
   }
 );
