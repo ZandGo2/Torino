@@ -1,5 +1,5 @@
 "use client";
-import { useReducer, createContext } from "react";
+import { useReducer, createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -36,9 +36,12 @@ const reducer = (state, action) => {
 
 const AuthProvider = ({ children }) => {
   const [statusLogin, dispatch] = useReducer(reducer, initialState);
+  const [accessToken, setAccessToken] = useState(null);
 
   return (
-    <AuthContext.Provider value={{ statusLogin, dispatch }}>
+    <AuthContext.Provider
+      value={{ statusLogin, dispatch, accessToken, setAccessToken }}
+    >
       {children}
     </AuthContext.Provider>
   );

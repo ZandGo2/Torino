@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 // import { AuthContext } from "@/context/AuthContext";
 import { notify } from "@/utils/tostify";
 
-// const { dispatch } = AuthContext();
+// const { accessToken, setAccessToken } = AuthContext();
 
 const axiosInstance = axios.create({
   // baseURL: process.env.BASE_URL,
@@ -17,6 +17,8 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = Cookies.get("access_token");
+    // const token = accessToken;
+
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
@@ -35,6 +37,7 @@ axiosInstance.interceptors.response.use(
     if (error.response && error.status == 401) {
       const messageError = error.response.data.message || "";
       notify("error", messageError);
+
       Cookies.remove("access_token");
       // open modal login
       // dispatch({ type: "OPEN_LOGIN" });

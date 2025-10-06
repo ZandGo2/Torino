@@ -11,6 +11,7 @@ const VerifyModal = () => {
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(10);
   const { statusLogin, dispatch } = useContext(AuthContext);
+  const { accessToken, setAccessToken } = useContext(AuthContext);
   const { mutate, data, error, isLoading1, isSuccess } = useCheckOtpMutation();
   const { clickHandler, isLoading } = useLoginHandler();
 
@@ -38,6 +39,8 @@ const VerifyModal = () => {
         {
           onSuccess: (data) => {
             notify("info", data.message);
+            // کوکی
+            setAccessToken(data.accessToken);
             setTimeout(() => {
               dispatch({ type: "CLOSE" });
             }, 2000);
