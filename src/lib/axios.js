@@ -16,8 +16,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = Cookies.get("access_token");
+    // const token = Cookies.get("access_token");
     // const token = accessToken;
+
+    const token = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
 
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
@@ -38,7 +41,7 @@ axiosInstance.interceptors.response.use(
       const messageError = error.response.data.message || "";
       notify("error", messageError);
 
-      Cookies.remove("access_token");
+      // Cookies.remove("access_token");
       // open modal login
       // dispatch({ type: "OPEN_LOGIN" });
     }

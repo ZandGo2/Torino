@@ -11,7 +11,7 @@ const VerifyModal = () => {
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(10);
   const { statusLogin, dispatch } = useContext(AuthContext);
-  const { accessToken, setAccessToken } = useContext(AuthContext);
+  // const { accessToken, setAccessToken } = useContext(AuthContext);
   const { mutate, data, error, isLoading1, isSuccess } = useCheckOtpMutation();
   const { clickHandler, isLoading } = useLoginHandler();
 
@@ -39,11 +39,13 @@ const VerifyModal = () => {
         {
           onSuccess: (data) => {
             notify("info", data.message);
-            // کوکی
-            setAccessToken(data.accessToken);
+            localStorage.setItem("accessToken", data.accessToken);
+            localStorage.setItem("refreshToken", data.refreshToken);
+            // setAccessToken(data.accessToken);
             setTimeout(() => {
               dispatch({ type: "CLOSE" });
             }, 2000);
+            window.location.reload();
           },
           onError: (error) => {
             notify("error", error.message);
