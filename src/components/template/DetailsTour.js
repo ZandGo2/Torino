@@ -18,7 +18,7 @@ const DetailsTour = ({ data }) => {
     fleetVehicle,
     endDate,
     availableSeats,
-    id
+    id,
   } = data;
 
   //   console.log(data);
@@ -53,7 +53,7 @@ const DetailsTour = ({ data }) => {
                   {price}
                 </span>
               </p>
-              <BtnOrder id={id}/>
+              <BtnOrder id={id} />
             </div>
           </div>
         </div>
