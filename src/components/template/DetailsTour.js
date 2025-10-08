@@ -6,7 +6,7 @@ import { IoCalendar } from "react-icons/io5";
 import { FaBus } from "react-icons/fa";
 import { FaUsersBetweenLines } from "react-icons/fa6";
 import { SiSecurityscorecard } from "react-icons/si";
-import Link from "next/link";
+import BtnOrder from "../module/btn/BtnOrder";
 
 const DetailsTour = ({ data }) => {
   const {
@@ -18,7 +18,9 @@ const DetailsTour = ({ data }) => {
     fleetVehicle,
     endDate,
     availableSeats,
+    id
   } = data;
+
   //   console.log(data);
   return (
     <div className="w-[100%] bg-gray-50 m-[20px]">
@@ -51,12 +53,7 @@ const DetailsTour = ({ data }) => {
                   {price}
                 </span>
               </p>
-              <Link
-                href=""
-                className="w-[204px] h-[56px] rounded-xl text-white bg-[#28A745] text-2xl font-normal flex flex-col items-center justify-center"
-              >
-                رزرو و خرید
-              </Link>
+              <BtnOrder id={id}/>
             </div>
           </div>
         </div>
@@ -64,42 +61,42 @@ const DetailsTour = ({ data }) => {
           <div className="flex flex-col items-center">
             <div className="flex items-center mb-3.5">
               <p>مبدا</p>
-              <CiRoute className="text-xl ml-3"/>
+              <CiRoute className="text-xl ml-3" />
             </div>
             <p>{origin.name}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center mb-3.5">
               <p>تاریخ رفت</p>
-              <IoCalendar className="text-xl ml-3"/>
+              <IoCalendar className="text-xl ml-3" />
             </div>
             <p>{startDate}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center mb-3.5">
               <p>تاریخ برگشت</p>
-              <IoCalendar className="text-xl ml-3"/>
+              <IoCalendar className="text-xl ml-3" />
             </div>
             <p>{endDate}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center mb-3.5">
               <p>حمل و نقل</p>
-              <FaBus className="text-xl ml-3"/>
+              <FaBus className="text-xl ml-3" />
             </div>
             <p>{fleetVehicle}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center mb-3.5">
               <p>ظرفیت</p>
-              <FaUsersBetweenLines className="text-xl ml-3"/>
+              <FaUsersBetweenLines className="text-xl ml-3" />
             </div>
             <p>{availableSeats}</p>
           </div>
           <div className="flex flex-col items-center">
             <div className="flex items-center mb-3.5">
               <p>بیمه</p>
-              <SiSecurityscorecard className="text-xl ml-3"/>
+              <SiSecurityscorecard className="text-xl ml-3" />
             </div>
             <p>بیمه 50 هزار دیناری</p>
           </div>
