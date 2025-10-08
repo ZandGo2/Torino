@@ -6,7 +6,7 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
 const page = () => {
-  const [dates, setDates] = useState([]);
+  const [dates, setDates] = useState();
 
   return (
     <div className="w-[1188px] m-auto my-[10%] flex flex-row-reverse">
@@ -26,21 +26,22 @@ const page = () => {
             type="number"
             placeholder="کدملی"
           />
+
           <DatePicker
-            range
             value={dates}
             onChange={setDates}
             calendar={persian}
             locale={persian_fa}
             className="custom-calendar"
             inputClass="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
-            type="number"
             placeholder="تاریخ تولد"
           />
           <select className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3">
-            <option disabled>جنسیت</option>
-            <option>مرد</option>
-            <option>زن</option>
+            <option value="" selected disabled>
+              جنسیت
+            </option>
+            <option value="men">مرد</option>
+            <option value="women">زن</option>
           </select>
         </div>
       </div>
