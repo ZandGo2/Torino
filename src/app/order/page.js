@@ -9,15 +9,23 @@ const page = () => {
   const [dates, setDates] = useState([]);
 
   return (
-    <div className="w-[1188px] m-auto my-[100px] bg-amber-400 p-11 flex flex-row-reverse">
-      <div>
-        <div>
-          <BsPersonFill />
-          <p>مشخصات مسافر</p>
+    <div className="w-[1188px] m-auto my-[10%] flex flex-row-reverse">
+      <div className="w-[865px] h-[228px] flex flex-col items-end bg-white p-3.5 rounded-xl ml-5 border border-black/20">
+        <div className="flex items-center">
+          <p className="text-2xl font-normal mr-3.5">مشخصات مسافر</p>
+          <BsPersonFill className="text-2xl" />
         </div>
-        <div>
-          <input type="text" placeholder="نام و نام خانوادگی" />
-          <input type="number" placeholder="کدملی" />
+        <div className="flex flex-row-reverse flex-wrap items-center justify-between w-[100%] h-[80%] mt-3.5">
+          <input
+            className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
+            type="text"
+            placeholder="نام و نام خانوادگی"
+          />
+          <input
+            className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
+            type="number"
+            placeholder="کدملی"
+          />
           <DatePicker
             range
             value={dates}
@@ -25,17 +33,18 @@ const page = () => {
             calendar={persian}
             locale={persian_fa}
             className="custom-calendar"
-            inputClass="w-[100%] text-right "
+            inputClass="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
+            type="number"
             placeholder="تاریخ تولد"
           />
-          <select>
-            <option>جنسیت</option>
+          <select className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3">
+            <option disabled>جنسیت</option>
             <option>مرد</option>
             <option>زن</option>
           </select>
         </div>
       </div>
-      <div className="w-[307px] h-[228px] rounded-xl flex flex-col justify-around items-center p-3.5 bg-white">
+      <div className="w-[307px] h-[228px] rounded-xl flex flex-col justify-around items-center p-3.5 bg-white border border-black/20">
         <div className="w-[100%] flex flex-row justify-between border-b-2 border-black/50 border-dashed pb-5">
           <span className="text-[#282828] text-base font-normal">
             5 روز و 4 شب
