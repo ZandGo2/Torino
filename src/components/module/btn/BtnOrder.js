@@ -1,7 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 const BtnOrder = (id) => {
+  const router = useRouter();
   const buyHandler = () => {
+    router.push("/order");
     console.log(id);
   };
 
