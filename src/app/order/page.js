@@ -6,7 +6,21 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 
 const page = () => {
-  const [dates, setDates] = useState();
+  const [data, setData] = useState({
+    nationalCode: "",
+    fullName: "",
+    gender: "",
+    birthDate: "",
+  });
+
+  const changeHandler = (e) => {
+    const { name, value } = e.target;
+    setData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const dateChangeHandler = (date) => {
+    setData((prev) => ({ ...prev, birthDate: date.format("YYYY-MM-DD") }));
+  };
 
   return (
     <div className="w-[1188px] m-auto my-[10%] flex flex-row-reverse">
@@ -17,31 +31,42 @@ const page = () => {
         </div>
         <div className="flex flex-row-reverse flex-wrap items-center justify-between w-[100%] h-[80%] mt-3.5">
           <input
+            onChange={changeHandler}
+            name="fullName"
+            value={data.fullName}
             className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
             type="text"
             placeholder="نام و نام خانوادگی"
           />
           <input
+            name="nationalCode"
+            value={data.nationalCode}
+            onChange={changeHandler}
             className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
             type="number"
             placeholder="کدملی"
           />
 
           <DatePicker
-            value={dates}
-            onChange={setDates}
+            value={data.birthDate}
+            onChange={dateChangeHandler}
             calendar={persian}
             locale={persian_fa}
             className="custom-calendar"
             inputClass="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
             placeholder="تاریخ تولد"
           />
-          <select className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3">
-            <option value="" selected disabled>
+          <select
+            value={data.gender}
+            onChange={changeHandler}
+            name="gender"
+            className="w-[262px] h-[50px] rounded-md text-right border border-black/50 pr-3"
+          >
+            <option value="" disabled>
               جنسیت
             </option>
-            <option value="men">مرد</option>
-            <option value="women">زن</option>
+            <option value="male">مرد</option>
+            <option value="female">زن</option>
           </select>
         </div>
       </div>
