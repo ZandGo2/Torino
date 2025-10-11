@@ -1,17 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsPersonFill } from "react-icons/bs";
 import DatePicker from "react-multi-date-picker";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import axiosInstance from "@/lib/axios";
 
 const page = () => {
   const [data, setData] = useState({
     nationalCode: "",
     fullName: "",
     gender: "",
-    birthDate: "",
+    birthDate: "2022-10-10",
   });
+  const [tourDetail, setTourDetail] = useState({});
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -21,6 +23,24 @@ const page = () => {
   const dateChangeHandler = (date) => {
     setData((prev) => ({ ...prev, birthDate: date.format("YYYY-MM-DD") }));
   };
+
+  const buyHandler = async () => {
+    try {
+      const res = await axiosInstance.post("/order");
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const getDetailTour = async () => {
+      const res = await axiosInstance.get("/basket");
+      const { id, price, title, endDate, startDate } = await res.data;
+      setTourDetail({ id, price, title, endDate, startDate });
+    };
+    getDetailTour();
+  }, []);
 
   return (
     <div className="w-[1188px] m-auto my-[10%] flex flex-row-reverse">
@@ -75,20 +95,23 @@ const page = () => {
           <span className="text-[#282828] text-base font-normal">
             5 روز و 4 شب
           </span>
-          <h2 className="font-semibold text-2xl">تور هولیر</h2>
+          <h2 className="font-semibold text-2xl">{tourDetail.title}</h2>
         </div>
         <div className="w-[100%] flex items-center justify-between mt-3">
           <p className="text-[#282828] text-base font-normal flex items-center">
             تومان{" "}
             <span className="text-[#009ECA] font-medium text-2xl ml-3">
-              17500000
+              {tourDetail.price}
             </span>
           </p>
           <span className="text-[#282828] text-base font-normal">
             قیمت نهایی
           </span>
         </div>
-        <button className="text-white bg-[#28A745] w-[283px] h-[56px] rounded-xl mt-3 text-2xl">
+        <button
+          onClick={buyHandler}
+          className="text-white bg-[#28A745] w-[283px] h-[56px] rounded-xl mt-3 text-2xl"
+        >
           ثبت و خرید نهایی
         </button>
       </div>
