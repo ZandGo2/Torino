@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const layout = ({ children }) => {
   return (
-    <div className="w-[1188px] my-[100px] m-auto flex">
-      <div className="w-[284px] h-[170px] rounded-xl py-1 px-3 flex flex-col justify-between items-end border border-black/20">
+    <div className="w-[1188px] my-[100px] m-auto flex flex-row-reverse items-start">
+      <div className="w-[284px] h-[170px] rounded-xl ml-7 py-1 px-3 flex flex-col justify-between items-end border border-black/20">
         <Link
           className="w-[100%] h-[100%] flex flex-row items-center justify-end"
           href=""
